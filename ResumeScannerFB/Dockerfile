@@ -9,12 +9,12 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 
 # Copy and restore
-COPY ["ResumeScannerFB.csproj", "./"]
-RUN dotnet restore "ResumeScannerFB.csproj"
+COPY ResumeScannerFB.csproj .
+RUN dotnet restore
 
-# Build
+# Copy everything else and build
 COPY . .
-RUN dotnet publish "ResumeScannerFB.csproj" -c Release -o /app/publish
+RUN dotnet publish ResumeScannerFB.csproj -c Release -o /app/publish
 
 # Final stage
 FROM base AS final
