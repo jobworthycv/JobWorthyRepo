@@ -1,0 +1,5 @@
+# Ignore Visual Studio and build files
+.vs/
+bin/
+obj/
+*.user
